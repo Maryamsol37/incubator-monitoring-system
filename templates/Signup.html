@@ -1,0 +1,86 @@
+{% extends "NavBar.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block additional_styles %}
+    <link rel="stylesheet" href="../static/login.css">
+{% endblock %}
+
+{% block content %}
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row border rounded-5 p-4 bg-white shadow box-area">
+
+        <!---------------- Left Box ---------------->
+        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+             style="background-image: linear-gradient(to right,#d9d9d1,#8b98c2);">
+            <div class="featured-image mb-3">
+                <img src="../static/Media/1.png" class="img-fluid" style="width: 250px;" alt="picture">
+            </div>
+            <p class="text-white fs-2" style="font-family: sans-serif; font-size: 40px; font-weight: 600;">
+                Welcome!
+            </p>
+        </div>
+
+        <!---------------- Right Box ---------------->
+        <div class="col-md-6 right-box">
+            <div class="row align-items-center">
+                <h2 class="header-text mb-4"
+                    style="font-family: sans-serif; color: #555; font-size: 40px; font-weight: 600;">
+                    Sign Up
+                </h2>
+            </div>
+
+            <form action="/submit_User" method="POST" id="signup-form">
+
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control form-control-lg bg-light fs-6" name="email"
+                           placeholder="Email" required aria-label="Email">
+                </div>
+
+                <div class="d-flex gap-3 mb-3">
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="name"
+                               placeholder="Name" required aria-label="Name">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" class="form-control form-control-lg bg-light fs-6" name="role"
+                               placeholder="Role" required aria-label="Role">
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" name="username"
+                           placeholder="Username" required aria-label="Username">
+                </div>
+
+                <div class="d-flex gap-3 mb-3">
+                    <div class="input-group">
+                        <input type="password" class="form-control form-control-lg bg-light fs-6" name="password"
+                               placeholder="Password" required aria-label="Password">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="number" class="form-control form-control-lg bg-light fs-6" name="userid"
+                               placeholder="User Id" required aria-label="User Id">
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="tel" class="form-control form-control-lg bg-light fs-6" name="phonenumber"
+                           placeholder="Phone Number" required aria-label="Phone Number">
+                </div>
+
+                <div class="input-group mb-3">
+                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6"
+                            style="font-weight: 600; background-image: linear-gradient(to right,#d9d9d1,#8b98c2); border: none;">
+                        Sign Up
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

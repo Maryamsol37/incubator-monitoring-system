@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="../static/registeration.css" />
+  </head>
+
+  <body>
+    <section class="container">
+      <header>Infant Registration</header>
+
+      <form action="/submit_registration" method="POST" class="form" enctype="multipart/form-data">
+        <div class="column">
+          <div class="input-box">
+              <label>
+                  <input type="text" name="full_name" placeholder="Full Name" required />
+              </label>
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-box">
+              <label>
+                  <input type="number" name="incubator_number" placeholder="incubator_number" required />
+              </label>
+          </div>
+          <div class="input-box">
+              <label>
+                  <input type="date" name="birth_date" required />
+              </label>
+          </div>
+          <div class="input-box">
+            <input type="number" class="form-control" name="age" placeholder="Age" required min="0" aria-label="Age">
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-box">
+              <label>
+                  <input type="text" name="infant_id" placeholder="infant_id" required />
+              </label>
+          </div>
+          <div class="input-box">
+              <label>
+                  <input type="text" name="weight_kg" placeholder="weight_kg" required />
+              </label>
+          </div>
+        </div>
+        <div class="column">
+          <div class="input-box">
+              <label>
+                  <input type="text" name="assigned_user" placeholder="assigned_user" required />
+              </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-100"
+          style="background-image: linear-gradient(to right,#d9d9d1,#8b98c2);border: none;">Register</button>
+      </form>
+    </section>
+
+  </body>
+</html>

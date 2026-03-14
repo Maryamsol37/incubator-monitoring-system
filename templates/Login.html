@@ -1,0 +1,60 @@
+{% extends "NavBar.html" %}
+
+{% block title %}Log In{% endblock %}
+
+{% block additional_styles %}
+<link rel="stylesheet" href="../static/login.css">
+{% endblock %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+
+    <!----------------------- Login Container -------------------------->
+
+    <div class="row border rounded-5 p-3 bg-white shadow box-area">
+
+        <!--------------------------- Left Box ----------------------------->
+
+        <div class="col-md-6 rounded-4 d-flex justify-content-center align-items-center flex-column left-box"
+            style="background-image: linear-gradient(to right,#d9d9d1,#8b98c2);">
+            <div class="featured-image mb-3">
+                <img src="../static/Media/1.png" class="img-fluid" style="width: 250px;" alt="picture">
+            </div>
+            <p class="text-white fs-2" style="font-family: sans-serif; font-size: 40px ;font-weight: 600;">Hello,
+                Again!</p>
+        </div>
+
+        <!----------------------------- Right Box ---------------------------->
+
+        <div class="col-md-6 right-box">
+            <div class="row align-items-center">
+                <h2 class="header-text mb-4"
+                    style="font-family: sans-serif;color: #555;font-size: 40px; font-weight: 600;">Log In</h2>
+            </div>
+
+            <form action="/login" method="POST" id="login-form">
+
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control form-control-lg bg-light fs-6" name="username" placeholder="Username" required
+                        aria-label="Username">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control form-control-lg bg-light fs-6" name="password" placeholder="Password"
+                        required aria-label="Password">
+                </div>
+
+                <div class="input-group mb-3">
+                    <button type="submit" class="btn btn-lg btn-primary w-100 fs-6"
+                        style="font-weight: 600; background-image: linear-gradient(to right,#d9d9d1,#8b98c2); border: none;">Log In</button>
+                </div>
+
+                 <div>
+                    <small><a href="/signup">Don't Have an Account? Sign Up </a></small>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

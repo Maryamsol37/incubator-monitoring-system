@@ -1,0 +1,202 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700");
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+body{
+ background-image: linear-gradient(to right,#d9d9d1,#8b98c2);
+}
+.container{
+  display: flex;
+}
+header {
+  font-size: 3rem;
+  color: #555;
+  font-weight: 600;
+}
+a{
+  position: relative;
+  color: rgb(85, 83, 83);
+  font-size: 14px;
+  display: table;
+  width: 270px;
+  padding: 10px;
+}
+a:hover{
+  background: #eee;
+}
+/* Main Section */
+.main{
+  position: relative;
+  padding: 20px;
+  width: 100%;
+}
+.main-top{
+  display: flex;
+  width: 100%;
+}
+.main-top i{
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(110, 109, 109);
+  cursor: pointer;
+}
+.main-skills {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(2, auto); /* 2 rows */
+    gap: 20px; /* Space between cards */
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.main-skills .card {
+    width: 350px; /* Set a fixed width */
+    height: 200px; /* Set a fixed height */
+    background: #fff;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+
+.main-skills .card h3{
+  margin: 10px;
+  text-transform: capitalize;
+}
+.main-skills .card p{
+  font-size: 12px;
+}
+.main-skills .card button{
+  background: orangered;
+  color: #fff;
+  padding: 7px 15px;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.main-skills .card button:hover{
+  background: rgba(223, 70, 15, 0.856);
+}
+.main-skills .card i{
+  font-size: 22px;
+  padding: 10px;
+}
+/* Courses */
+.html{
+  color: rgb(25, 94, 54);
+}
+.css{
+  color: rgb(104, 179, 35);
+}
+.js{
+  color: #8b98c2;
+}
+#light-level-value {
+  font-size: 50px;
+  font-weight: bold;
+}
+.lux-text {
+  font-size: 24px;
+}
+#temperature-value {
+  font-size: 50px;
+  font-weight: bold;
+}
+.celsius-text {
+  font-size: 24px;
+}
+#heart-rate-value {
+  font-size: 50px;
+  font-weight: bold;
+}
+.bpm-text {
+  font-size: 24px;
+}
+#humidity-value {
+  font-size: 50px;
+  font-weight: bold;
+}
+.per-text {
+  font-size: 24px;
+}
+#sound-level-value {
+  font-size: 50px;
+  font-weight: bold;
+}
+.dB-text {
+  font-size: 24px;
+}
+#weight-value {
+  font-size: 50px;
+  font-weight: bold;
+}
+.kg-text {
+  font-size: 24px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+/*warnings*/
+.popup{
+  display: none;
+  width: 400px;
+  height: 400px;
+  background-color: #dddddd;
+  box-shadow: 0px 10px 20px rgba(115,115,115,0.53);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* ✅ Perfectly centers the popup */
+  border-radius: 5px;
+  text-align: center;
+  z-index: 1000;
+  border: 2px solid #B22222;
+  padding: 20px; /* ✅ Add some padding for better layout */
+}
+.butn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #B22222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Adds a small button shadow */
+}
+.popup_content {
+  text-align: center;
+  padding: 20px;
+  padding-top: 80px;
+}
+.popup_header {
+  width: 100%;
+  height: 30%; /* Takes up 30% of the popup */
+  background: #B22222; /* Red color */
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.popup .butn h2, .popup p{
+  position: relative; /* Ensures text appears below the red header */
+  z-index: 2;
+  margin-top: 40px; /* Adjust so text doesn't overlap red section */
+}
+.warn{
+  color: #B22222;
+  padding-top: 60px;
+}

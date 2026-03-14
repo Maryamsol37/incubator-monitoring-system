@@ -1,0 +1,230 @@
+<span style="font-family: verdana, geneva, sans-serif;"> <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Infant Data</title>
+        <link rel="stylesheet" href="../static/infantdata.css"/>
+        <!-- Font Awesome Cdn Link -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.0/socket.io.js"></script>
+    </head>
+    <body>
+        <div class="container">
+
+            <section class="main">
+
+                <div class="main-top">
+                    <header>Infant Data</header>
+                    <i class="fas fa-user-cog"></i>
+                </div>
+
+                <div class="main-skills">
+
+
+                    <div class="card" id="temp">
+                        <i class="fas fa-thermometer-half" style="font-size: 40px;"></i>
+                        <p><span id="temperature-value">--</span><span class="celsius-text">°C</span></p>
+                        <h2>Temperature</h2>
+                        {# <a href="/doclist"><button>click here</button></a> #}
+                    </div>
+                    <script>
+                        var socket = io.connect("http://127.0.0.1:5000"); // Connect to WebSocket server
+
+                        socket.on("sensor_data", function (sensor_data) {
+                            console.log("Received data:", sensor_data);
+
+                            // Update the heart rate placeholder
+                            document.getElementById("temperature-value").textContent = sensor_data.temp;
+                        });
+                    </script>
+
+                    <div class="card" id="heart_rate">
+                        <i class="fas fa-heartbeat" style="font-size: 40px;"></i>
+                        <p><span id="heart-rate-value">--</span> <span class="bpm-text">bpm</span></p>
+                        <h2>Heart Rate</h2>
+                        {# <a href="/N_list"><button>click here</button></a> #}
+                    </div>
+
+                    <script>
+                        var socket = io.connect("http://127.0.0.1:5000"); // Connect to WebSocket server
+
+                        socket.on("sensor_data", function (sensor_data) {
+                            console.log("Received data:", sensor_data);
+
+                            // Update the heart rate placeholder
+                            document.getElementById("heart-rate-value").textContent = sensor_data.heart_rate;
+                        });
+                    </script>
+
+
+
+                    <div class="card" id="humidity">
+                        <i class="fas fa-tint" style="font-size: 40px;"></i>
+                        <p><span id="humidity-value">--</span><span class="per-text">%</span></p>
+                        <h2>Humidity</h2>
+                        {# <a href="/P_list"><button>click here</button></a> #}
+                    </div>
+
+                    <script>
+                        var socket = io.connect("http://127.0.0.1:5000"); // Connect to WebSocket server
+
+                        socket.on("sensor_data", function (sensor_data) {
+                            console.log("Received data:", sensor_data);
+
+                            // Update the humidity placeholder
+                            document.getElementById("humidity-value").textContent = sensor_data.humidity;
+                        });
+                    </script>
+
+                    <div class="card" id="sound_level">
+                        <i class="fas fa-assistive-listening-systems" style="font-size: 40px;"></i>
+                        <p><span id="sound-level-value">--</span> <span class="dB-text">dB</span></p>
+                        <h2>Sound Level</h2>
+                        {# <a href="/reception"><button>click here</button></a> #}
+                    </div>
+
+                    <script>
+                        var socket = io.connect("http://127.0.0.1:5000"); // Connect to WebSocket server
+
+                        socket.on("sensor_data", function (sensor_data) {
+                            console.log("Received data:", sensor_data);
+
+                            // Update the sound level placeholder
+                            document.getElementById("sound-level-value").textContent = sensor_data.sound_level;
+                        });
+                    </script>
+
+
+                    <div class="card" id="light_level">
+                        <i class="far fa-lightbulb" style="font-size: 40px;"></i>
+                        <p><span id="light-level-value">--</span> <span class="lux-text">lux</span></p>
+                        <h2>Light Level</h2>
+                        {# <a href="/P_list"><button>click here</button></a> #}
+                    </div>
+                    <script>
+                        var socket = io.connect("http://127.0.0.1:5000"); // Connect to WebSocket server
+
+                        socket.on("sensor_data", function (sensor_data) {
+                            console.log("Received data:", sensor_data);
+
+                            // Update the light level placeholder
+                            document.getElementById("light-level-value").textContent = sensor_data.light_level;
+                        });
+                    </script>
+
+                    <div class="card" id="weight">
+                        <i class="fas fa-weight" style="font-size: 40px;"></i>
+                        <p><span id="weight-value">--</span> <span class="kg-text">kg</span></p>
+                        <h2>Weight</h2>
+                        {# <a href="/reception"><button>click here</button></a> #}
+                    </div>
+
+                    <script>
+                        var socket = io.connect("http://127.0.0.1:5000"); // Connect to WebSocket server
+
+                        socket.on("sensor_data", function (sensor_data) {
+                            console.log("Received data:", sensor_data);
+
+                            // Update the weight placeholder
+                            document.getElementById("weight-value").textContent = sensor_data.weight;
+                        });
+                    </script>
+
+
+                </div>
+            </section>
+            <div id="warning-popup" class="popup">
+                <div class="popup_content">
+                    <div class="popup_header"></div> <!-- Red top section (30%) -->
+                    <h2 class="warn">⚠ Warning!</h2>
+                    <p>Temperature is too high!</p>
+                    <button onclick="closePopup()" class="butn">OK</button>
+                </div>
+            </div>
+            <script>
+                let popupVisible = false;
+                let cooldownActive = false;
+                const cooldownTime = 5000;
+
+                function showPopup(temp, heartRate, lightLevel, soundLevel) {
+                    let popup = document.getElementById("warning-popup");
+                    let message = popup.querySelector("p");
+
+                    let warningMessage = "";
+
+                    // Check temperature conditions
+                    if (temp > 37) {
+                        warningMessage += "⚠️ Temperature is too HIGH! (" + temp + "°C)\n";
+                    } else if (temp < 34) {
+                        warningMessage += "⚠️ Temperature is too LOW! (" + temp + "°C)\n";
+                    }
+
+                    // Check heart rate conditions
+                    if (heartRate > 140) {
+                        warningMessage += "\n❤️ Heart rate is TOO HIGH! (" + heartRate + " BPM)\n";
+                    } else if (heartRate < 80) {
+                        warningMessage += "\n❤️ Heart rate is TOO LOW! (" + heartRate + " BPM)\n";
+                    }
+
+                    // Check light level condition
+                    if (lightLevel > 600) {
+                        warningMessage += "\n💡 Light level is TOO HIGH! (" + lightLevel + " lux)\n";
+                    }
+
+                    // Check sound level condition
+                    if (soundLevel > 50) {
+                        warningMessage += "\n🔊 Sound level is TOO HIGH! (" + soundLevel + " dB)\n";
+                    }
+
+                    // If no warnings, hide the popup
+                    if (warningMessage.trim() === "") {
+                        closePopup();
+                        return;
+                    }
+
+                    // If popup is already visible, just update the message
+                    if (popupVisible) {
+                        message.textContent = warningMessage;
+                        return;
+                    }
+
+                    // Show the popup if it's not on cooldown
+                    if (!cooldownActive) {
+                        message.textContent = warningMessage;
+                        popup.style.display = "block";
+                        popupVisible = true;
+                    }
+                }
+
+                function closePopup() {
+                    let popup = document.getElementById("warning-popup");
+                    popup.style.display = "none";
+                    popupVisible = false;
+                    cooldownActive = true;
+
+                    // Start cooldown timer before allowing the popup to show again
+                    setTimeout(() => {
+                        cooldownActive = false;
+                    }, cooldownTime);
+                }
+
+                var socket = io.connect("http://127.0.0.1:5000");
+
+                socket.on("sensor_data", function (sensor_data) {
+                    console.log("Received data:", sensor_data);
+
+                    // Update Display Values
+                    document.getElementById("temperature-value").textContent = sensor_data.temp;
+                    document.getElementById("heart-rate-value").textContent = sensor_data.heart_rate;
+                    document.getElementById("light-level-value").textContent = sensor_data.light_level;
+                    document.getElementById("sound-level-value").textContent = sensor_data.sound_level;
+
+                    // Trigger warning popup
+                    showPopup(sensor_data.temp, sensor_data.heart_rate, sensor_data.light_level, sensor_data.sound_level);
+                });
+            </script>
+        </div>
+    </body>
+    </html>
+</span>
